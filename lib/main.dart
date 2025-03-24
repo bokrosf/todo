@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/task_list/widget/task_list_screen.dart';
 
 void main() {
   runApp(const TodoApp());
@@ -12,9 +13,10 @@ class TodoApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Todo')),
+          title: Text('Todo')
+        ),
         body: Center(
-          child: Text('Todo'),
+          child: TaskListScreen(),
         ),
       ),
     );

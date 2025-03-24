@@ -32,37 +32,40 @@ class _TaskListScreenState extends State<TaskListScreen> {
     return ListenableBuilder(
       listenable: _viewModel,
       builder: (_, _) {
-        return Column(
-          children: [
-            Text('Header'),
-            Expanded(
-              child: ListView(
-                children: _viewModel.tasks.map((task) {
-                  return Task(
-                    key: ValueKey(task.id),
-                    viewModel: task,
-                    onCompletionToggled: () => _viewModel.toggleCompletion(task.id),
-                  );
-                }).toList(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextField(
-                controller: _newTaskController,
-                focusNode: _focusNode,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Add task',
+        return Padding(
+          padding: EdgeInsets.all(4.0),
+          child: Column(
+            children: [
+              Text('Header'),
+              Expanded(
+                child: ListView(
+                  children: _viewModel.tasks.map((task) {
+                    return Task(
+                      key: ValueKey(task.id),
+                      viewModel: task,
+                      onCompletionToggled: () => _viewModel.toggleCompletion(task.id),
+                    );
+                  }).toList(),
                 ),
-                onSubmitted: (text) {
-                  _viewModel.add(text);
-                  _newTaskController.clear();
-                  _focusNode.requestFocus();
-                },
               ),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.only(bottom: 20.0, top: 8.0),
+                child: TextField(
+                  controller: _newTaskController,
+                  focusNode: _focusNode,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Add task',
+                  ),
+                  onSubmitted: (text) {
+                    _viewModel.add(text);
+                    _newTaskController.clear();
+                    _focusNode.requestFocus();
+                  },
+                ),
+              ),
+            ],
+          ),
         );
       },
     );

@@ -14,14 +14,19 @@ class Task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Checkbox(
-          value: viewModel.isCompleted,
-          onChanged: (value) => _onCompletionToggled.call(viewModel.id),
-        ),
-        Text(viewModel.text),
-      ],
+    return ListenableBuilder(
+      listenable: viewModel,
+      builder: (_, _) {
+        return Row(
+          children: [
+            Checkbox(
+              value: viewModel.isCompleted,
+              onChanged: (value) => _onCompletionToggled.call(viewModel.id),
+            ),
+            Text(viewModel.text),
+          ],
+        );
+      }
     );
   }
 }

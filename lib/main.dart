@@ -12,6 +12,7 @@ class TodoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 185, 202, 233),
         appBar: AppBar(
           title: Text('Todo')
         ),

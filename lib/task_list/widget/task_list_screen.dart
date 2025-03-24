@@ -44,7 +44,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     onCompletionToggled: () => _viewModel.toggleCompletion(task.id),
                   );
                 }).toList(),
-              )
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),

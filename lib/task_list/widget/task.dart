@@ -29,6 +29,7 @@ class Task extends StatelessWidget {
               onChanged: (_) => _onCompletionToggled.call(),
             ),
             title: Text(viewModel.text),
+            horizontalTitleGap: 5,
           ),
         );
       }

@@ -38,14 +38,16 @@ class _TaskListScreenState extends State<TaskListScreen> {
             children: [
               Text('Header'),
               Expanded(
-                child: ListView(
-                  children: _viewModel.tasks.map((task) {
+                child: ListView.builder(
+                  itemCount: _viewModel.tasks.length,
+                  itemBuilder: (context, index) {
+                    final task = _viewModel.tasks[index];
                     return Task(
                       key: ValueKey(task.id),
                       viewModel: task,
                       onCompletionToggled: () => _viewModel.toggleCompletion(task.id),
                     );
-                  }).toList(),
+                  }
                 ),
               ),
               Padding(

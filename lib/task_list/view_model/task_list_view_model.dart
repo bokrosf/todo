@@ -6,11 +6,11 @@ import 'package:todo/task_list/view_model/task_view_model.dart';
 
 class TaskListViewModel extends ChangeNotifier {
   final List<TaskViewModel> _tasks = [
-    TaskViewModel(Task(1, 'first', false)),
-    TaskViewModel(Task(2, 'second', false)),
-    TaskViewModel(Task(3, 'third', true)),
-    TaskViewModel(Task(4, 'fourth', true)),
     TaskViewModel(Task(5, 'fifth', false)),
+    TaskViewModel(Task(4, 'fourth', true)),
+    TaskViewModel(Task(3, 'third', true)),
+    TaskViewModel(Task(2, 'second', false)),
+    TaskViewModel(Task(1, 'first', false)),
   ];
 
   int _lastTaskId = 6;
@@ -23,7 +23,7 @@ class TaskListViewModel extends ChangeNotifier {
     }
 
     final task = Task(_lastTaskId++, text, false);
-    _tasks.add(TaskViewModel(task));
+    _tasks.insert(0, TaskViewModel(task));
     notifyListeners();
   }
 

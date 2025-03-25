@@ -45,7 +45,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     return Task(
                       key: ValueKey(task.id),
                       viewModel: task,
-                      onCompletionToggled: () => toggleCompletion(task.id),
+                      onCompletionToggled: toggleCompletion,
                     );
                   }
                 ),

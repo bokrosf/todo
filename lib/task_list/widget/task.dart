@@ -3,12 +3,12 @@ import 'package:todo/task_list/view_model/task_view_model.dart';
 
 class Task extends StatelessWidget {
   final TaskViewModel viewModel;
-  final void Function() _onCompletionToggled;
+  final void Function(int) _onCompletionToggled;
 
   const Task({
     super.key,
     required this.viewModel,
-    required void Function() onCompletionToggled
+    required void Function(int) onCompletionToggled
   })
     : _onCompletionToggled = onCompletionToggled;
 
@@ -26,7 +26,7 @@ class Task extends StatelessWidget {
             leading: Checkbox(
               shape: CircleBorder(),
               value: viewModel.isCompleted,
-              onChanged: (_) => _onCompletionToggled.call(),
+              onChanged: (_) => _onCompletionToggled.call(viewModel.id),
             ),
             title: Text(viewModel.text),
             horizontalTitleGap: 5,

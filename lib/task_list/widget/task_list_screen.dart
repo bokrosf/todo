@@ -45,7 +45,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     return Task(
                       key: ValueKey(task.id),
                       viewModel: task,
-                      onCompletionToggled: () => _viewModel.toggleCompletion(task.id),
+                      onCompletionToggled: () => toggleCompletion(task.id),
                     );
                   }
                 ),
@@ -59,11 +59,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     border: OutlineInputBorder(),
                     hintText: 'Add task',
                   ),
-                  onSubmitted: (text) {
-                    _viewModel.add(text);
-                    _newTaskController.clear();
-                    _focusNode.requestFocus();
-                  },
+                  onSubmitted: addTask,
                 ),
               ),
             ],
@@ -71,5 +67,15 @@ class _TaskListScreenState extends State<TaskListScreen> {
         );
       },
     );
+  }
+
+  void toggleCompletion(int id) {
+    _viewModel.toggleCompletion(id);
+  }
+
+  void addTask(String text) {
+    _viewModel.add(text);
+    _newTaskController.clear();
+    _focusNode.requestFocus();
   }
 }

@@ -85,12 +85,12 @@ class _TaskListScreenState extends State<TaskListScreen> {
     );
   }
 
-  void toggleCompletion(int id) {
-    _viewModel.toggleCompletion(id);
+  void toggleCompletion(int id) async {
+    await _viewModel.toggleCompletion(id);
   }
 
-  void addTask(String text) {
-    _viewModel.add(text);
+  void addTask(String text) async {
+    await _viewModel.add(text);
     _newTaskController.clear();
     _focusNode.requestFocus();
   }

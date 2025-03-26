@@ -63,7 +63,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
   }
 
   void _addTask(String text) async {
-    await _viewModel.add(text);
+    await _viewModel.add(text.trim());
     _newTaskController.clear();
     _focusNode.requestFocus();
   }

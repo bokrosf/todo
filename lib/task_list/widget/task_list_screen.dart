@@ -42,10 +42,26 @@ class _TaskListScreenState extends State<TaskListScreen> {
                   itemCount: _viewModel.tasks.length,
                   itemBuilder: (context, index) {
                     final task = _viewModel.tasks[index];
-                    return Task(
-                      key: ValueKey(task.id),
-                      viewModel: task,
-                      onCompletionToggled: toggleCompletion,
+                    return Padding(
+                      padding: EdgeInsets.symmetric(vertical: 1.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Dismissible(
+                          key: ValueKey(task.id),
+                          background: Material(
+                            color: Colors.amber,
+                            child: Text('Not Implemented.'),
+                          ),
+                          secondaryBackground: Material(color: Colors.red),
+                          onDismissed: (direction) => _dismissTask(task.id, direction),
+                          confirmDismiss: (direction) => _dismissTask(task.id, direction),
+                          child: Task(
+                            viewModel: task,
+                            color: Colors.white,
+                            onCompletionToggled: toggleCompletion,
+                          ),
+                        ),
+                      ),
                     );
                   }
                 ),
@@ -77,5 +93,19 @@ class _TaskListScreenState extends State<TaskListScreen> {
     _viewModel.add(text);
     _newTaskController.clear();
     _focusNode.requestFocus();
+  }
+
+  Future<bool> _dismissTask(int id, DismissDirection direction) async {
+    if (direction == DismissDirection.endToStart) {
+      await _viewModel.delete(id);
+      return true;
+    }
+
+    if (direction == DismissDirection.startToEnd) {
+      await _viewModel.addToToday(id);
+      return false;
+    }
+
+    return false;
   }
 }

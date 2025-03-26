@@ -35,4 +35,8 @@ class TaskListViewModel extends ChangeNotifier {
   Future<void> toggleCompletion(int id) async {
     _tasks.firstWhere((t) => t.id == id).toggleCompletion();
   }
+
+  Future<void> addToToday(int id) async {
+    // TODO Implement marking the task's planned completion date.
+  }
 }

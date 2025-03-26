@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo/task_list/view_model/task_list_view_model.dart';
 import 'package:todo/task_list/widget/task.dart';
 
@@ -10,7 +11,7 @@ class TaskListScreen extends StatefulWidget {
 }
 
 class _TaskListScreenState extends State<TaskListScreen> {
-  final _viewModel = TaskListViewModel();
+  late TaskListViewModel _viewModel;
   final _newTaskController = TextEditingController();
   late FocusNode _focusNode;
 
@@ -29,6 +30,8 @@ class _TaskListScreenState extends State<TaskListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _viewModel = context.watch<TaskListViewModel>();
+
     return ListenableBuilder(
       listenable: _viewModel,
       builder: (_, _) {

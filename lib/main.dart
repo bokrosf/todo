@@ -18,7 +18,14 @@ class TodoApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Todo')
         ),
-        body: TaskListScreen(),
+        body: MultiProvider(
+          providers: [
+            ChangeNotifierProvider(
+              create: (context) => TaskListViewModel()
+            ),
+          ],
+          child: TaskListScreen(),
+        ),
       ),
     );
   }

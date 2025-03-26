@@ -32,35 +32,30 @@ class _TaskListScreenState extends State<TaskListScreen> {
   Widget build(BuildContext context) {
     _viewModel = context.watch<TaskListViewModel>();
 
-    return ListenableBuilder(
-      listenable: _viewModel,
-      builder: (_, _) {
-        return Padding(
-          padding: EdgeInsets.all(4.0),
-          child: Column(
-            children: [
-              Text('Header'),
-              Expanded(
-                child: TaskList(
-                  viewModel: _viewModel,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 20.0, top: 8.0),
-                child: TextField(
-                  controller: _newTaskController,
-                  focusNode: _focusNode,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Add task',
-                  ),
-                  onSubmitted: _addTask,
-                ),
-              ),
-            ],
+    return Padding(
+      padding: EdgeInsets.all(4.0),
+      child: Column(
+        children: [
+          Text('Header'),
+          Expanded(
+            child: TaskList(
+              viewModel: _viewModel,
+            ),
           ),
-        );
-      },
+          Padding(
+            padding: EdgeInsets.only(bottom: 20.0, top: 8.0),
+            child: TextField(
+              controller: _newTaskController,
+              focusNode: _focusNode,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Add task',
+              ),
+              onSubmitted: _addTask,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

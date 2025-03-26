@@ -31,7 +31,6 @@ class TaskList extends StatelessWidget {
                 child: Text('Not Implemented.'),
               ),
               secondaryBackground: Material(color: Colors.red),
-              onDismissed: (direction) => _dismissTask(task.id, direction),
               confirmDismiss: (direction) => _dismissTask(task.id, direction),
               child: Task(
                 viewModel: task,

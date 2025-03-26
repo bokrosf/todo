@@ -58,7 +58,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                           child: Task(
                             viewModel: task,
                             color: Colors.white,
-                            onCompletionToggled: toggleCompletion,
+                            onCompletionToggled: _toggleCompletion,
                           ),
                         ),
                       ),
@@ -75,7 +75,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
                     border: OutlineInputBorder(),
                     hintText: 'Add task',
                   ),
-                  onSubmitted: addTask,
+                  onSubmitted: _addTask,
                 ),
               ),
             ],
@@ -85,11 +85,11 @@ class _TaskListScreenState extends State<TaskListScreen> {
     );
   }
 
-  void toggleCompletion(int id) async {
+  void _toggleCompletion(int id) async {
     await _viewModel.toggleCompletion(id);
   }
 
-  void addTask(String text) async {
+  void _addTask(String text) async {
     await _viewModel.add(text);
     _newTaskController.clear();
     _focusNode.requestFocus();

@@ -17,19 +17,17 @@ class Task extends StatelessWidget {
     return ListenableBuilder(
       listenable: viewModel,
       builder: (_, _) {
-        return Card(
+        return Container(
           color: Colors.white,
-          margin: EdgeInsets.all(3),
-          elevation: 2,
-          child: ListTile(
-            contentPadding: EdgeInsets.zero,
-            leading: Checkbox(
-              shape: CircleBorder(),
-              value: viewModel.isCompleted,
-              onChanged: (_) => _onCompletionToggled.call(viewModel.id),
-            ),
-            title: Text(viewModel.text),
-            horizontalTitleGap: 5,
+          child: Row(
+            children: [
+              Checkbox(
+                shape: CircleBorder(),
+                value: viewModel.isCompleted,
+                onChanged: (_) => _onCompletionToggled.call(viewModel.id),
+              ),
+              Text(viewModel.text),
+            ],
           ),
         );
       }

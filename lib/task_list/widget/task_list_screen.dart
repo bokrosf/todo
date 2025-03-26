@@ -43,7 +43,9 @@ class _TaskListScreenState extends State<TaskListScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 20.0, top: 8.0),
+            padding: EdgeInsets.only(
+              bottom: 20.0,
+              top: 8.0,),
             child: TextField(
               controller: _newTaskController,
               focusNode: _focusNode,

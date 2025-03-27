@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/task_list/view_model/task_list_view_model.dart';
-import 'package:todo/task_list/widget/task_list.dart';
+import 'package:todo/task_list/view/task_list.dart';
 
 class TaskListScreen extends StatefulWidget {
   final TaskListViewModel _viewModel;

@@ -3,19 +3,14 @@ import 'package:todo/task_list/view_model/task_list_view_model.dart';
 import 'package:todo/task_list/widget/task_list.dart';
 
 class TaskListScreen extends StatefulWidget {
-  final TaskListViewModel _viewModel;
-
-  const TaskListScreen({
-    super.key,
-    required TaskListViewModel viewModel,
-  })
-    : _viewModel = viewModel;
+  const TaskListScreen({super.key});
 
   @override
   State<TaskListScreen> createState() => _TaskListScreenState();
 }
 
 class _TaskListScreenState extends State<TaskListScreen> {
+  final _viewModel = TaskListViewModel();
   final _newTaskController = TextEditingController();
   late FocusNode _focusNode;
 
@@ -35,7 +30,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
-      listenable: widget._viewModel,
+      listenable: _viewModel,
       builder:(_, _) {
         return Padding(
           padding: EdgeInsets.all(4.0),
@@ -44,7 +39,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
               Text('Header'),
               Expanded(
                 child: TaskList(
-                  viewModel: widget._viewModel,
+                  viewModel: _viewModel,
                 ),
               ),
               Padding(
@@ -70,7 +65,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
   }
 
   void _addTask(String text) async {
-    await widget._viewModel.add(text.trim());
+    await _viewModel.add(text.trim());
     _newTaskController.clear();
     _focusNode.requestFocus();
   }

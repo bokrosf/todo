@@ -51,6 +51,10 @@ class TaskList extends StatelessWidget {
   }
 
   Future<bool> _dismissTask(int id, DismissDirection direction) async {
+    if (_viewModel.locked) {
+      return false;
+    }
+
     if (direction == DismissDirection.endToStart) {
       await _viewModel.delete(id);
       return true;

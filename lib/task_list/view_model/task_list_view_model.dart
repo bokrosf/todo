@@ -23,8 +23,6 @@ class TaskListViewModel extends ChangeNotifier with InteractionGuard {
       return;
     }
 
-    await Future.delayed(Duration(seconds: 5));
-
     if (text.isEmpty) {
       return;
     }
@@ -40,7 +38,6 @@ class TaskListViewModel extends ChangeNotifier with InteractionGuard {
       return;
     }
 
-    await Future.delayed(Duration(seconds: 5));
     _tasks.removeWhere((t) => t.id == id);
     notifyListeners();
     unlock();
@@ -51,13 +48,11 @@ class TaskListViewModel extends ChangeNotifier with InteractionGuard {
       return;
     }
 
-    await Future.delayed(Duration(seconds: 5));
     _tasks.firstWhere((t) => t.id == id).toggleCompletion();
     unlock();
   }
 
   Future<void> addToToday(int id) async {
-    await Future.delayed(Duration(seconds: 5));
     // TODO Implement marking the task's planned completion date.
   }
 }

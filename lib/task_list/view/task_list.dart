@@ -40,7 +40,7 @@ class TaskList extends StatelessWidget {
                 ),
               ),
             );
-          }
+          },
         );
       },
     );

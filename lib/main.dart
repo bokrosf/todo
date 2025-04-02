@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:todo/persistence/persistence.dart' as persistence;
 import 'package:todo/task_list/widget/task_list_screen.dart';
 
-void main() {
+Future<void> main() async {
+  await persistence.initialize();
   runApp(const TodoApp());
 }
 

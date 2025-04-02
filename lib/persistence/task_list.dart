@@ -6,10 +6,10 @@ part 'task_list.g.dart';
 class TaskList {
   Id id = Isar.autoIncrement;
   String name;
-  bool custom;
+  bool builtin;
 
   TaskList({
     required this.name,
-    this.custom = true,
+    this.builtin = false,
   });
 }

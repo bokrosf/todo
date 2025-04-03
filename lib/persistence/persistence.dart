@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:todo/persistence/project.dart';
 import 'package:todo/persistence/task.dart';
-import 'package:todo/persistence/task_list.dart';
 
 late final Isar database;
 
@@ -14,7 +14,7 @@ Future<void> initialize() async {
 
   database = await Isar.open(
     [
-      TaskListSchema,
+      ProjectSchema,
       TaskSchema,
     ],
     name: 'database',

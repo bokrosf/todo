@@ -5,7 +5,7 @@ part 'task.g.dart';
 @collection
 class Task {
   Id id = Isar.autoIncrement;
-  int listId;
+  int projectId;
   String text;
   int? parentId;
   DateTime createdAt;
@@ -14,7 +14,7 @@ class Task {
   String? note;
 
   Task({
-    required this.listId,
+    required this.projectId,
     required this.text,
     this.parentId,
     required this.createdAt,

@@ -1,14 +1,14 @@
 import 'package:isar/isar.dart';
 
-part 'task_list.g.dart';
+part 'project.g.dart';
 
 @collection
-class TaskList {
+class Project {
   Id id = Isar.autoIncrement;
   String name;
   bool builtin;
 
-  TaskList({
+  Project({
     required this.name,
     this.builtin = false,
   });

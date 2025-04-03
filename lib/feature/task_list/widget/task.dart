@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo/task_list/view_model/task_view_model.dart';
+import 'package:todo/feature/task_list/view_model/task_view_model.dart';
 
 class Task extends StatelessWidget {
   final TaskViewModel _viewModel;

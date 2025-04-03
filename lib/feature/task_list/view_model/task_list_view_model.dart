@@ -1,8 +1,8 @@
 import 'dart:collection';
 
 import 'package:flutter/widgets.dart';
-import 'package:todo/task_list/model/task.dart';
-import 'package:todo/task_list/view_model/task_view_model.dart';
+import 'package:todo/feature/task_list/model/task.dart';
+import 'package:todo/feature/task_list/view_model/task_view_model.dart';
 import 'package:todo/view_model/interaction_guard.dart';
 
 class TaskListViewModel extends ChangeNotifier with InteractionGuard {

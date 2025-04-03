@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:todo/task_list/model/task.dart';
+import 'package:todo/feature/task_list/model/task.dart';
 
 class TaskViewModel extends ChangeNotifier {
   bool _isCompleted;

@@ -29,7 +29,9 @@ class Task extends StatelessWidget {
                 value: _viewModel.isCompleted,
                 onChanged: (_) => _onCompletionToggled.call(_viewModel.id),
               ),
-              Text(_viewModel.text),
+              Expanded(
+                child: Text(_viewModel.text),
+              ),
             ],
           ),
         );

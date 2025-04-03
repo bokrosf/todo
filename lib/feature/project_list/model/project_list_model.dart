@@ -36,6 +36,20 @@ class ProjectListModel {
     ).toList();
   }
 
+  Future<void> add(String name) async {
+    name = name.trim();
+
+    if (name.isEmpty) {
+      throw ArgumentError('Name must not be empty.', 'name');
+    }
+
+    final created = persistence.Project(
+      name: name,
+    );
+
+    await database.projects.put(created);
+  }
+
   Future<void> delete(int id) async {
     await database.projects.delete(id);
   }

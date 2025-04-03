@@ -1,5 +1,7 @@
+import 'package:isar/isar.dart';
 import 'package:todo/persistence/persistence.dart';
-import 'package:todo/persistence/project.dart';
+import 'package:todo/persistence/project.dart' as persistence;
+import 'package:todo/feature/project_list/model/project.dart';
 
 const int _defaultProjectId = 1;
 
@@ -12,7 +14,7 @@ class ProjectListModel {
     }
 
     await database.writeTxn(() async {
-      final created = Project(
+      final created = persistence.Project(
         name: 'Tasks',
         builtin: true,
       );
@@ -20,5 +22,17 @@ class ProjectListModel {
       created.id = _defaultProjectId;
       await database.projects.put(created);
     });
+  }
+
+  Future<List<Project>> load() async {
+    final projects = await database.projects.where().findAll();
+
+    return projects.map(
+      (p) => Project(
+        id: p.id,
+        name: p.name,
+        builtin: p.builtin,
+      )
+    ).toList();
   }
 }

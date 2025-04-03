@@ -35,4 +35,8 @@ class ProjectListModel {
       )
     ).toList();
   }
+
+  Future<void> delete(int id) async {
+    await database.projects.delete(id);
+  }
 }

@@ -29,13 +29,7 @@ class ProjectListViewModel extends ChangeNotifier with InteractionGuard {
 
     var loaded = await _model.load();
     _projects = loaded
-      .map(
-        (p) => ProjectViewModel(
-          id: p.id,
-          name: p.name,
-          builtin: p.builtin,
-        )
-      )
+      .map((p) => ProjectViewModel.fromModel(p))
       .toList();
 
     notifyListeners();

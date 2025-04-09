@@ -1,6 +1,7 @@
 import 'package:isar/isar.dart';
 import 'package:todo/persistence/persistence.dart';
 import 'package:todo/persistence/project.dart' as persistence;
+import 'package:todo/persistence/task.dart';
 import 'package:todo/feature/project_list/model/project.dart';
 
 const int _defaultProjectId = 1;
@@ -51,6 +52,9 @@ class ProjectListModel {
   }
 
   Future<void> delete(int id) async {
-    await database.projects.delete(id);
+    database.writeTxn(() async {
+      await database.projects.delete(id);
+      await database.tasks.filter().projectIdEqualTo(id).deleteAll();
+    });
   }
 }

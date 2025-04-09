@@ -1,9 +1,11 @@
 import 'dart:collection';
 
+import 'package:flutter/widgets.dart';
 import 'package:todo/feature/project_list/model/project_list_model.dart';
 import 'package:todo/feature/project_list/view_model/project_view_model.dart';
+import 'package:todo/view_model/interaction_guard.dart';
 
-class ProjectListViewModel {
+class ProjectListViewModel extends ChangeNotifier with InteractionGuard {
   final ProjectListModel _model;
   List<ProjectViewModel> _projects = [];
 
@@ -20,4 +22,23 @@ class ProjectListViewModel {
     return UnmodifiableListView(_projects.where((p) => !p.builtin));
   }
 
+  Future<void> load() async {
+    if (!lock()) {
+      return;
+    }
+
+    var loaded = await _model.load();
+    _projects = loaded
+      .map(
+        (p) => ProjectViewModel(
+          id: p.id,
+          name: p.name,
+          builtin: p.builtin,
+        )
+      )
+      .toList();
+
+    notifyListeners();
+    unlock();
+  }
 }
